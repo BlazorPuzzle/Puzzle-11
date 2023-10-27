@@ -1,0 +1,23 @@
+﻿@inject AppState appState
+@implements IDisposable
+@using System.ComponentModel
+
+<h3>@appState.Message</h3>
+
+@code 
+{
+    protected override void OnInitialized()
+    {
+        appState.PropertyChanged += AppState_PropertyChanged;
+    }
+
+    void AppState_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
+
+    void IDisposable.Dispose()
+    {
+        appState.PropertyChanged -= AppState_PropertyChanged;
+    }   
+}

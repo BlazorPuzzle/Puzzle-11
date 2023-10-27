@@ -1,0 +1,23 @@
+﻿@page "/"
+@inject AppState appState
+
+<p>
+    This is an example of using a service to share state between components.
+    <br />
+    <br />
+    The service is injected into this page, and also into the Toolbar 
+    component, which subscribes to the PropertyChanged event.
+    <br />
+    <br />
+    When the event is raised, the Toolbar calls StateHasChanged to re-render.
+    <br />
+    <br />
+    Is there a better way to achieve this in a Blazor app?
+</p>
+
+<h3>Start Typing</h3>
+<input @bind=appState.Message @bind:event="oninput" />
+
+<br />
+<br />
+<p>@appState.Message</p>
